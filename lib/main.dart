@@ -2,7 +2,8 @@ import 'package:flutter/material.dart';
 // import 'package:hello_world_flutter/study/listview/listview.dart';
 // import 'package:hello_world_flutter/study/listview2/listview2.dart';
 // import 'package:hello_world_flutter/study/navigate/navigate.dart';
-import 'package:hello_world_flutter/study/navigate2/navigate2.dart';
+// import 'package:hello_world_flutter/study/navigate2/navigate2.dart';
+import 'package:hello_world_flutter/study/snackbar/snackbar.dart';
 
 
 void main() {
@@ -14,7 +15,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return new MaterialApp(
       title: 'flutter app',
-      home: new MyNavigate2()
+      home: new MySnackBar()
     );
   }
 }
