@@ -32,10 +32,19 @@ class _MySnackBarState extends State<MySnackBar> {
                     ),
                     onTap: () {
                       final snackbar = new SnackBar(
-                          content: Text(
-                        items[idx].asUpperCase,
-                        style: TextStyle(),
-                      ));
+                        content: Text(
+                          items[idx].asUpperCase,
+                          style: TextStyle(),
+                        ),
+                        backgroundColor: Colors.green,
+                        duration: new Duration(milliseconds: 1000),
+                        action: SnackBarAction(
+                          label: "Ok",
+                          onPressed: () {
+                            print("ok");
+                          },
+                        ),
+                      );
                       Scaffold.of(context).showSnackBar(snackbar);
                     },
                   );
