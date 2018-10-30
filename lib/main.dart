@@ -5,7 +5,12 @@ import 'package:flutter/material.dart';
 // import 'package:hello_world_flutter/study/navigate2/navigate2.dart';
 // import 'package:hello_world_flutter/study/snackbar/snackbar.dart';
 // import 'package:hello_world_flutter/study/layout/layout.dart';
-import 'package:hello_world_flutter/study/gridview/gridview.dart';
+// import 'package:hello_world_flutter/study/gridview/gridview.dart';
+// import 'package:hello_world_flutter/study/stacklayout/stacklayout.dart';
+// import 'package:hello_world_flutter/study/card/cardlayout.dart';
+// import 'package:hello_world_flutter/study/tabs/tabs.dart';
+import 'package:hello_world_flutter/study/drawer/drawer.dart';
+
 
 void main() {
   runApp(new MyApp());
@@ -16,7 +21,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return new MaterialApp(
       title: 'flutter app',
-      home: new MyGridView()
+      home: new MyDrawer()
     );
   }
 }
