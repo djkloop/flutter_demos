@@ -31,7 +31,7 @@ class _MyDrawerState extends State<MyDrawer> {
                     Text("djkloop", style: TextStyle(
                       fontSize: 16.0,
                       color: Colors.black
-                    ),),
+                    )),
                   ],
                 ),
               ),
