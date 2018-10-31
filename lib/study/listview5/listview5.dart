@@ -1,20 +1,28 @@
 import 'package:flutter/material.dart';
-import 'data.dart';
 import 'dart:convert';
-import 'package:cached_network_image/cached_network_image.dart';
+import 'package:http/http.dart';
 
-class MyListView4 extends StatefulWidget {
+import 'package:flutter_advanced_networkimage/flutter_advanced_networkimage.dart';
+import 'package:flutter_advanced_networkimage/transition_to_image.dart';
+
+class MyListView5 extends StatefulWidget {
   @override
-  _MyListView4State createState() => _MyListView4State();
+  _MyListView5State createState() => _MyListView5State();
 }
 
-class _MyListView4State extends State<MyListView4> {
+class _MyListView5State extends State<MyListView5> {
+  GlobalKey<ScaffoldState> _scaffoldState = GlobalKey();
+
   List pokemons = [];
 
   loadData() async {
-    var jsonDatas = jsonDecode(jsonData);
-    print("jsonDatas: $jsonDatas");
-    pokemons = jsonDatas["pokemon"];
+    Response response = await get(
+        "https://raw.githubusercontent.com/Biuni/PokemonGO-Pokedex/master/pokedex.json");
+
+    var jsonDatas = jsonDecode(response.body);
+    setState(() {
+      pokemons = jsonDatas["pokemon"];
+    });
   }
 
   List<Widget> _renderRows() {
@@ -27,6 +35,18 @@ class _MyListView4State extends State<MyListView4> {
 
       index++;
       return ListTile(
+        onTap: () {
+          var snackbar = SnackBar(
+            content: Text(name, style: TextStyle(
+              color: Colors.black,
+            ),),
+            backgroundColor: Colors.deepOrangeAccent,
+            duration: Duration(
+              milliseconds: 500,
+            ),
+          );
+          _scaffoldState.currentState.showSnackBar(snackbar);
+        },
         title: Container(
           padding: EdgeInsets.all(10.0),
           decoration: BoxDecoration(
@@ -36,10 +56,14 @@ class _MyListView4State extends State<MyListView4> {
             children: <Widget>[
               Container(
                 decoration: BoxDecoration(color: Colors.lightGreenAccent),
-                child: CachedNetworkImage(
-                  imageUrl: imageUrl,
-                  placeholder: CircularProgressIndicator(),
+                child: TransitionToImage(
+                  AdvancedNetworkImage(
+                    imageUrl,
+                  ),
                   fit: BoxFit.cover,
+                  placeholder: new Icon(Icons.error),
+                  width: 68.0,
+                  height: 68.0,
                 ),
               ),
               Container(
@@ -64,6 +88,7 @@ class _MyListView4State extends State<MyListView4> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      key: _scaffoldState,
       appBar: AppBar(
         title: Text('list view 4'),
       ),
