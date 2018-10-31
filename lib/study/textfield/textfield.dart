@@ -5,6 +5,11 @@ class MyTextfield extends StatefulWidget {
 }
 
 class _MyTextfieldState extends State<MyTextfield> {
+
+  String user;
+  String email;
+  String password;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -24,6 +29,9 @@ class _MyTextfieldState extends State<MyTextfield> {
               keyboardType: TextInputType.text,
               decoration: InputDecoration(
                   hintText: "请输入姓名", contentPadding: EdgeInsets.all(10.0)),
+                  onChanged: (text) {
+                    user = text;
+                  },
             ),
           ),
           Container(
@@ -36,6 +44,10 @@ class _MyTextfieldState extends State<MyTextfield> {
               keyboardType: TextInputType.text,
               decoration: InputDecoration(
                   hintText: "请输入密码", contentPadding: EdgeInsets.all(10.0)),
+                  obscureText: true,
+                  onChanged: (text) {
+                    password = text;
+                  },
             ),
           ),
           Container(
@@ -48,6 +60,9 @@ class _MyTextfieldState extends State<MyTextfield> {
               keyboardType: TextInputType.emailAddress,
               decoration: InputDecoration(
                   hintText: "请输入邮件", contentPadding: EdgeInsets.all(10.0)),
+                  onChanged: (text) {
+                    email = text;
+                  },
             ),
           ),
           Container(
@@ -56,7 +71,27 @@ class _MyTextfieldState extends State<MyTextfield> {
               children: <Widget>[
                 RaisedButton(
                   child: Text("登陆"),
-                  onPressed: () {},
+                  onPressed: () {
+                    String content = "user：$user, email：$email, password：$password";
+                    print(content);
+                    var route = MaterialPageRoute(
+                      builder: (BuildContext context) {
+                        return  Scaffold(
+                          appBar: AppBar(
+                            title: Text(
+                              "details"
+                            ),
+                          ),
+                           body: Center(
+                             child: Text(
+                               content
+                             ),
+                            ),
+                        );
+                      }
+                    );
+                    Navigator.of(context).push(route);
+                  },
                 ),
               ],
             ),
