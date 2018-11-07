@@ -14,19 +14,17 @@ import 'package:flutter/material.dart';
 // import 'package:hello_world_flutter/study/cacheimage/cacheimage.dart';
 // import 'package:hello_world_flutter/study/listview3/listview3.dart';
 // import 'package:hello_world_flutter/study/listview5/listview5.dart';
-import 'package:hello_world_flutter/study/listview6/listview6.dart';
+// import 'package:hello_world_flutter/study/listview6/listview6.dart';
+import 'package:hello_world_flutter/study/scaffold-dart/scaffold.dart';
 
-
-void main() {
-  runApp(new MyApp());
-}
+void main() => runApp(new MyApp());
 
 class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return new MaterialApp(
       title: 'flutter app',
-      home: new MyListView6()
+      home:  new MyScaffold(),
     );
   }
 }
