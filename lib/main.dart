@@ -20,7 +20,6 @@ import 'package:hello_world_flutter/study/bottom-appbar/bottom_appbar.dart';
 
 void main() => runApp(new MyApp());
 
-/// 厉害了...
 class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
